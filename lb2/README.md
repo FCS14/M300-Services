@@ -33,7 +33,7 @@ In der LB2 des Moduls 300 (Plattformübergreifende Dienste in ein Netzwerk integ
 
 ### Voraussetzungen
 - Die neuste Version von Virtualbox muss installiert sein
-- Auf Virtualbox dürfen keine VMs vorhanden sein, die "m300_webserver" oder "m300_database" heissen
+- Auf Virtualbox dürfen keine VMs vorhanden sein, welche den Namen "m300_webserver" oder "m300_database" beinhalten
 - Vagrant muss installiert sein
 
 ---
@@ -74,7 +74,7 @@ Die Umgebung besteht aus einem Webserver und einem Datenbankserver. Auf dem Webs
 ```
 ADDITIONALFILES = Dir.pwd + "/AdditionalFiles"
 ```
-Als erstes geben wir den Pfad an, an dem die Files sind, welche wir für die VMs brauchen.
+Als Erstes geben wir den Pfad an, an denen die Files sind. Diese benötigen wir  für die VMs brauchen.
 ```
 Vagrant.configure("2") do |config|
 ```
@@ -82,11 +82,11 @@ Ab hier startet die Konfiguration der VMs.
 ```
   config.vm.synced_folder ADDITIONALFILES, "/var/www"
 ```
-Hier teilen wir den Ordner für die VMs.
+Hier teilen wir den Ordner für die VMs mit.
 ```
   config.vm.box = "ubuntu/bionic64"
 ```
-Nun geben wir noch die Box der VMs an, damit Vagrant dies installieren kann.
+Nun wird die Box noch der VMs mitgeteilt, damit Vagrant dies installieren kann.
 ```
 # Webserver Konfiguration
   config.vm.define "web" do |web|
@@ -95,7 +95,7 @@ Nun geben wir noch die Box der VMs an, damit Vagrant dies installieren kann.
      vb.memory = 1024
     end
 ```
-Bei diesem Schritt Konfigurieren wir den Webserver.
+Bei diesem Schritt konfigurieren wir den Webserver.
 ```
 # Netzwerk-Konfiguration für den Webserver
   web.vm.network "private_network", ip: "192.168.0.20"
@@ -286,13 +286,13 @@ Folgende Verbindungen müssen im PHP-File vorhanden sein. Diese Daten werden an 
 ## Vagrantumgebung Starten/Herunterfahren
 
 ### Hochfahren
-Um die Umgebung zu starten öffnet man als erstes **im Ordner vom Vagrantfile** ein git Bash Terminal. In dieses kann man dann `vagrant up` schreiben. Danach werden die VMs aufgesetzt.
+Um die Umgebung zu starten, öffnet man als Erstes **im Ordner vom Vagrantfile** ein git Bash Terminal. In dieses kann man dann `vagrant up` schreiben. Danach werden die VMs aufgesetzt.
 
 ### Herunterfahren
 Um die Umgebung herunterzufahren kann man ins gleiche Terminal `vagrant halt`  schreiben.
 
 ### VMs löschen
-Um die VMs zu löschen kann man ins Terminal `vagrant destroy`" schreiben. Danach bestätigt man mit `y`, dass man die VMs löschen möchte.
+Um die VMs zu löschen, kann man ins Terminal `vagrant destroy`" schreiben. Danach bestätigt man mit `y`, dass man die VMs löschen möchte.
 
 >**NOTE:** Das Terminal muss immer **im Ordner vom Vagrantfile** geöffnet sein!
  
