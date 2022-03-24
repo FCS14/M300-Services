@@ -217,7 +217,7 @@ Um auf die einzelnen VMs zuzugreifen, muss man lediglich im Terminal im **gleich
 - Tabelle anzeigen mit `select*from response;`
 
 ### Verlassen der VM
-- Um die VM zu verlassen und die SHH-Verbindung zu trennen, muss man den Befehl `exit` eintippen
+- Um die VM zu verlassen und die SSH-Verbindung zu trennen, muss man den Befehl `exit` eintippen
 ---
 
 ## Sicherheit
