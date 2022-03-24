@@ -1,0 +1,11 @@
+h1 {color: green}
+p{color: red}
+
+body {
+	background-color: hsla(30,40%,90%,0.5);
+}
+
+label {
+display: inline-block;
+width: 100px;
+margin-bottom: 10px;}
