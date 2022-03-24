@@ -206,7 +206,7 @@ Um auf die einzelnen VMs zuzugreifen, muss man lediglich im Terminal im **gleich
 
 ### 1. Via SSH auf Datenbankserver verbinden
 - Terminal im Ordner vom Vagrantfile öffnen
-- Ins Terminal `vagrant shh db` tippen
+- Ins Terminal `vagrant ssh db` tippen
 
 ### 2. In MySQL einloggen
 - Mit `mysql -uroot -p` in MySQL einloggen
