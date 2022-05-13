@@ -1,0 +1,52 @@
+version: '2'
+
+networks:
+    lb3_Network:
+
+services:
+    php-apache-environment:
+        container_name: lb3_php-apache
+        build:
+            context: ./php
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+        volumes:
+            - ./php/src:/var/www/html/
+        ports:
+            - "8080:80"
+        networks:
+            - lb3_Network
+
+    db:
+        container_name: lb3_db
+        image: mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+            MYSQL_DATABASE: MYSQL_DATABASE
+            MYSQL_USER: MYSQL_USER
+            MYSQL_PASSWORD: MYSQL_PASSWORD
+        build:
+            context: ./mysql
+            dockerfile: Dockerfile
+        volumes:
+            - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+        ports:
+            - "9906:3306"
+        networks:
+            - lb3_Network
+        
+    
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        
+        restart: always
+        environment:
+              PMA_HOST: db
+        depends_on:
+            - db
+        ports:
+            - "8000:80"
+        networks:
+            - lb3_Network
